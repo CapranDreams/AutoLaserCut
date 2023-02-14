@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        {% include "_header.html" %}    
+    </head>
+    <body>
+        {% include "_nav.html" %}    
+
+        <h1>Upload to Database</h1>
+
+        <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Upload" />
+        </form>
+        
+        {% include "_db.html" %}   
+
+        <script type="text/javascript" src="{% static '/js/testscript.js' %}"></script>
+    </body>
+</html>
+
+
+

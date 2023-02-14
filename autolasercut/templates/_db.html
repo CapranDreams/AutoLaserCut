@@ -1,0 +1,15 @@
+{% load static %}
+<table class="table">
+    <tr>
+        <th>Toolpath</th>
+        <th>Length</th>
+        <th>Type</th>
+    </tr>
+    {% for tp in data %}
+        <tr>
+            <td><a href="{{tp.toolpath}}">{{tp.toolpath}}</a></td>
+            <td>{{tp.vectorlength}}</td>
+            <td>{{tp.vectortype}}</td>
+        </tr>
+    {% endfor %}
+</table>

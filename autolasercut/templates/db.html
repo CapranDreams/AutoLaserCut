@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        {% include "_header.html" %}    
+    </head>
+    <body>
+        {% include "_nav.html" %}    
+
+        <innerbody>
+            <h1>Toolpath Database / Repository</h1>
+            <p>Browse previously generated toolpaths. Upload manually <a href="/db/upload">here</a>.</p>
+
+        </innerbody>
+
+        {% include "_db.html" %}   
+
+        <script type="text/javascript" src="{% static '/js/testscript.js' %}"></script>
+    </body>
+</html>
+
+
+
