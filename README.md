@@ -1,5 +1,5 @@
 # autolasercut
 
-Automatic Laser Cutter Interface
-SEIS 739
-Project members: Sasha Schrandt
+<p>Automatic Laser Cutter Interface</p>
+<p>SEIS 739</p>
+<p>Project members: Sasha Schrandt</p>
