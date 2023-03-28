@@ -26,7 +26,7 @@ urlpatterns = [
     path('raster/', views.raster_view, name='raster'),
     path('box/', views.box_view, name='box'),
     path('gear/', views.gear_view, name='gear'),
-    path('db/upload', views.db_upload, name='upload'),
+    #path('db/upload', views.db_upload, name='upload'),
     path('db/', views.db_view, name='db'),
     path('', views.home_view, name='index'),
 ]
