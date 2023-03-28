@@ -3,21 +3,25 @@
 <html lang="en">
     <head>
         {% include "_header.html" %}    
+		<link rel="stylesheet" type="text/css" href="{% static '/css/boxstyle.css' %}" >
+        <script src="{% static '/js/boxscript.js' %}"></script>
     </head>
-    <body>
+    <body onload="initPage(1)">
         {% include "_nav.html" %}    
 
-        <innerbody>
-            <h1>Laser Cut Gear Generator</h1>
-            <p>This application will help you create gears based ona diameter and number of teeth specified.</p>
+        <h1>Laser Cut Gear Generator</h1>
+        <p>This application will help you create gears based on a diameter and number of teeth specified.</p>
 
-        </innerbody>
-
-        
-
-        <script type="text/javascript" src="{% static '/js/testscript.js' %}"></script>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Generate Involute Gear" />
+        </form>
     </body>
 </html>
+
+
+
 
 
 

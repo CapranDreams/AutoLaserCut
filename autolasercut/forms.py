@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Toolpaths
+#from .models import Toolpaths
 
 
 class UploadForm(ModelForm):
@@ -8,15 +8,15 @@ class UploadForm(ModelForm):
     vectorlength = forms.FloatField(required=False)
     vectortype = forms.CharField(required=True, max_length=10)
 
-    class Meta:
-        model = Toolpaths
-        fields = ['toolpath', 'vectorlength', 'vectortype']
+    #class Meta:
+    #    model = Toolpaths
+    #    fields = ['toolpath', 'vectorlength', 'vectortype']
 
 class BoxForm(forms.Form):
     box_Length = forms.IntegerField(min_value=1, max_value=100000, help_text="(mm)", required=True)
     box_Width = forms.IntegerField(min_value=1, max_value=100000, help_text="(mm)", required=True)
     box_Depth = forms.IntegerField(min_value=1, max_value=100000, help_text="(mm)", required=True)
-    box_Name = forms.CharField(required=True, max_length=300, help_text="(Name for this box)")
+    box_Name = forms.CharField(required=True, max_length=300, help_text="")
 
     class Meta:
         finally_fields = ['box_Length', 'box_Width', 'box_Depth', 'box_Name']
@@ -30,3 +30,11 @@ class BoxForm2(forms.Form):
 
     class Meta:
         finally_fields = ['boxcode_Length', 'boxcode_Width', 'boxcode_Depth', 'boxcode_Name', 'boxcode_gcode']
+
+class GearForm(forms.Form):
+    gear_name = forms.CharField(required=True, max_length=300, help_text="")
+    gear_teeth = forms.IntegerField(min_value=5, max_value=300, help_text="(mm)", required=True)
+    gear_diameter = forms.IntegerField(min_value=1, max_value=100000, help_text="(mm)", required=True)
+
+    class Meta:
+        finally_fields = ['gear_name', 'gear_teeth', 'gear_diameter']

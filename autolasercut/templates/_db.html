@@ -1,15 +1,48 @@
 {% load static %}
-<table class="table">
+
+<input type="text" id="searchField" onkeyup="searchFilter()" placeholder="Search filename..." title="Search name">
+
+<table class="table" id="myTable">
     <tr>
-        <th>Toolpath</th>
-        <th>Length</th>
-        <th>Type</th>
+        <th style="width:30%;">Name</th>
+        <th style="width:15%;">Type</th>
+        <th style="width:15%;">File Address</th>
+        <th style="width:40%;">Preview</th>
     </tr>
     {% for tp in data %}
         <tr>
-            <td><a href="{{tp.toolpath}}">{{tp.toolpath}}</a></td>
-            <td>{{tp.vectorlength}}</td>
-            <td>{{tp.vectortype}}</td>
+            <td><a href="{{tp.toolpath}}">{{tp.name}}</a></td>
+            <td>{{tp.type}}</td>
+            <td><a href="{{tp.file}}"><img class="downloadIcon" src="{{tp.toolpath}}/../static/img/download_icon.png" />Download</a></td>
+            <td><svg viewBox="0 0 100 100" width="10%">
+              <img src={{tp.file}} style="width:100px;" />
+              </svg></td>
         </tr>
     {% endfor %}
+
+    {% block content %}
+
+    {% endblock %}
 </table>
+
+<script>
+    function searchFilter() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchField");
+        filter = input.value.toUpperCase();
+
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }       
+        }
+    }
+</script>

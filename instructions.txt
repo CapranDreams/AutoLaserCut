@@ -1,0 +1,12 @@
+run the following in terminal to start the server
+    python manage.py runserver 8000
+
+navigate a web browser to
+    localhost:8000
+
+
+generate class diagram
+    python manage.py graph_models -a -g --dot -o classDiagram.dot
+    dot -Tpng classDiagram.dot -o classDiagram.png
+
+    

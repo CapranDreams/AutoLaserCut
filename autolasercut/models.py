@@ -1,5 +1,9 @@
 from django.db import models
 
+import svgwrite
+#from svgwrite import cm, mm 
+
+'''
 class Toolpaths(models.Model):
     toolpath = models.FileField(upload_to='toolpaths')
     filename = models.FilePathField(path='toolpaths')
@@ -9,3 +13,5 @@ class Toolpaths(models.Model):
 
     def __str__(self):
         return f"{self.filename} is {self.vectorlength} lines long"
+    
+'''

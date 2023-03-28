@@ -6,6 +6,12 @@ from django.shortcuts import redirect
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
+import svgwrite
+from svgwrite import cm, mm 
+from autolasercut.utils import get_collection, get_records, add_record, new_record
+from autolasercut.box import makeBox
+from autolasercut.gears import makeGear
+
 def home_view(request):
     return render(request, 'index.html', {'name':'wololololo'})
 
@@ -18,29 +24,42 @@ def raster_view(request):
 def box_view(request):
     if request.method == 'POST':
         form = BoxForm(request.POST, request.FILES)
-        form2 = BoxForm2(request.POST, request.FILES)
-        if form2.is_valid():
-            cd = form2.cleaned_data
-            boxName = cd.get('boxcode_Name') + ".gcode"
-            boxDims = [cd.get('boxcode_Length'), cd.get('boxcode_Width'), cd.get('boxcode_Depth')]
-            #do something with gcode...
-            newTP = Toolpaths(toolpath=boxName ,vectorlength=boxDims[0]+boxDims[1]+boxDims[2], vectortype="box")
-            newTP.save()
-            print(newTP)
-        else:
-            print(form2.errors)
 
-            
-    return render(request, 'box.html', {'form':BoxForm, 'form2':BoxForm2})
+        if form.is_valid():
+            cd = form.cleaned_data
+            boxName = cd.get('box_Name')
+            boxDims = [cd.get('box_Length'), cd.get('box_Width'), cd.get('box_Depth')]
+            myBox = makeBox(boxDims[0], boxDims[1], boxDims[2], boxName)
+            print(myBox)
+        else:
+            print(form.errors)
+
+    return render(request, 'box.html', {'form':BoxForm})
 
 
 def gear_view(request):
-    return render(request, 'gear.html', {'name':'gear_view'})
+    if request.method == 'POST':
+        form = GearForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            cd = form.cleaned_data
+            gear_name = cd.get('gear_name')
+            gear_teeth = cd.get('gear_teeth')
+            gear_diameter = cd.get('gear_diameter')
+            myGear = makeGear(gear_name, gear_teeth, gear_diameter, side=0)
+        else:
+            print(form.errors)
+
+    return render(request, 'gear.html', {'form':GearForm})
 
 def db_view(request):
-    toolpaths = Toolpaths.objects.all()
-    return render(request, 'db.html', {'data':toolpaths})
+    mycollection = get_collection('toolpaths', 'tp')
 
+    rows = get_records(mycollection)
+
+    return render(request, 'db.html', {'data':rows})
+
+'''
 def db_upload(request):
     toolpaths = Toolpaths.objects.all()
     if request.method == 'POST' and request.FILES['toolpath']:
@@ -57,5 +76,8 @@ def db_upload(request):
             uploaded_file_url = fs.url(filename)
             print(uploaded_file_url)
 
-    #return render(request, 'db_upload.html', {'data':toolpaths, 'form':form})
     return render(request, 'db_upload.html', {'data':toolpaths, 'form':UploadForm})
+'''
+
+
+

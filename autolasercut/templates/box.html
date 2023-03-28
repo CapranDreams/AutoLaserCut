@@ -12,6 +12,12 @@
         <h1>Laser Cut Box Generator</h1>
         <p>This application will help you generate a laser cut box from basic template as shown below. Adjust the width, length, and depth of the box to generate your custom box.</p>
 
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Generate Box" />
+        </form>
+        
         <!--
         <form action="javascript:;" onsubmit="generateBox(this)">
             {% csrf_token %}
@@ -24,9 +30,9 @@
             {{form2}}
             <input type="submit" value="Add to Database" />
         </form>
-        -->
+        
 
-        <!--<form id="boxcode_form" action="{% url 'db' %}" method="post" enctype="multipart/form-data">
+        <form id="boxcode_form" action="{% url 'db' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="boxcode"></label>
             <textarea id="boxcode" name="boxcode" rows="30" cols="160">This is where your box gcode will generate...</textarea><br>
@@ -35,9 +41,11 @@
             <input type="hidden" id="boxDhidden" name="boxD" value="-1">
             <input type="hidden" id="boxNhidden" name="boxN" value="theNamelessBox">
             <input type="submit" value="Add to database" />
-        </form>-->
+        </form>
+        -->
 
 
+        <!--
         <div class="clear"></div>
         <form action="./ClosedBox" method="GET" rel="nofollow">
             <h3 id="h-0" data-id="0" role="button" aria-expanded="true" tabindex="0" class="toggle open">Settings for Finger Joints</h3>
@@ -141,6 +149,8 @@
             <div class="clear"></div>
 
         <script type="text/javascript" src="{% static '/js/boxgen.js' %}"></script>
+        -->
+
     </body>
 </html>
 
