@@ -10,7 +10,7 @@
         {% include "_nav.html" %}    
 
         <h1>Laser Cut Box Generator</h1>
-        <p>This application will help you generate a laser cut box from basic template as shown below. Adjust the width, length, and depth of the box to generate your custom box.</p>
+        <p style="text-align: center;">This application will help you generate a laser cut box from basic template as shown below. Adjust the width, length, and depth of the box to generate your custom box.</p>
 
         <form action="" method="post">
             {% csrf_token %}
@@ -18,138 +18,6 @@
             <input type="submit" value="Generate Box" />
         </form>
         
-        <!--
-        <form action="javascript:;" onsubmit="generateBox(this)">
-            {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Generate Box" />
-        </form>
-
-        <form action="{% url 'box' %}" method="post" enctype="multipart/form-data" id="boxform2">
-            {% csrf_token %}
-            {{form2}}
-            <input type="submit" value="Add to Database" />
-        </form>
-        
-
-        <form id="boxcode_form" action="{% url 'db' %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="boxcode"></label>
-            <textarea id="boxcode" name="boxcode" rows="30" cols="160">This is where your box gcode will generate...</textarea><br>
-            <input type="hidden" id="boxLhidden" name="boxL" value="-1">
-            <input type="hidden" id="boxWhidden" name="boxW" value="-1">
-            <input type="hidden" id="boxDhidden" name="boxD" value="-1">
-            <input type="hidden" id="boxNhidden" name="boxN" value="theNamelessBox">
-            <input type="submit" value="Add to database" />
-        </form>
-        -->
-
-
-        <!--
-        <div class="clear"></div>
-        <form action="./ClosedBox" method="GET" rel="nofollow">
-            <h3 id="h-0" data-id="0" role="button" aria-expanded="true" tabindex="0" class="toggle open">Settings for Finger Joints</h3>
-            <table role="presentation" id="0">
-                <tr>
-                    <td id="FingerJoint_angle_id"><label for="FingerJoint_angle">angle</label></td>
-                    <td><input name="FingerJoint_angle" id="FingerJoint_angle" aria-labeledby="FingerJoint_angle_id FingerJoint_angle_description" type="text" value="90.0"></td>
-                    <td id="FingerJoint_angle_description"></td>
-                </tr>
-                <tr>
-                    <td id="FingerJoint_style_id"><label for="FingerJoint_style">style</label></td>
-                    <td><select name="FingerJoint_style" id="FingerJoint_style" aria-labeledby="FingerJoint_style_id FingerJoint_style_description" size="1">
-                        <option value="rectangular" selected="selected">rectangular</option>
-                        <option value="springs">springs</option>
-                        <option value="barbs">barbs</option>
-                        <option value="snap">snap</option></select></td>
-                    <td id="FingerJoint_style_description"><p>style of the fingers</p></td>
-                </tr>
-                <tr>
-                    <td id="FingerJoint_surroundingspaces_id"><label for="FingerJoint_surroundingspaces">surroundingspaces</label></td>
-                    <td><input name="FingerJoint_surroundingspaces" id="FingerJoint_surroundingspaces" aria-labeledby="FingerJoint_surroundingspaces_id FingerJoint_surroundingspaces_description" type="text" value="2.0"></td>
-                    <td id="FingerJoint_surroundingspaces_description"><p>space at the start and end in multiple of normal spaces</p></td>
-                </tr>
-                <tr>
-                    <td id="FingerJoint_bottom_lip_id"><label for="FingerJoint_bottom_lip">bottom_lip</label></td>
-                    <td><input name="FingerJoint_bottom_lip" id="FingerJoint_bottom_lip" aria-labeledby="FingerJoint_bottom_lip_id FingerJoint_bottom_lip_description" type="text" value="0.0"></td>
-                    <td id="FingerJoint_bottom_lip_description"><p>height of the bottom lips sticking out  (multiples of thickness) FingerHoleEdge only!</p></td>
-                </tr>
-                <tr>
-                    <td id="FingerJoint_edge_width_id"><label for="FingerJoint_edge_width">edge_width</label></td>
-                    <td><input name="FingerJoint_edge_width" id="FingerJoint_edge_width" aria-labeledby="FingerJoint_edge_width_id FingerJoint_edge_width_description" type="text" value="1.0"></td>
-                    <td id="FingerJoint_edge_width_description"><p>space below holes of FingerHoleEdge (multiples of thickness)</p></td>
-                </tr>
-                <tr>
-                    <td id="FingerJoint_extra_length_id"><label for="FingerJoint_extra_length">extra_length</label></td>
-                    <td><input name="FingerJoint_extra_length" id="FingerJoint_extra_length" aria-labeledby="FingerJoint_extra_length_id FingerJoint_extra_length_description" type="text" value="0.0"></td>
-                    <td id="FingerJoint_extra_length_description"><p>extra material to grind away burn marks (multiples of thickness)</p></td>
-                </tr>
-                <tr>
-                    <td id="FingerJoint_finger_id"><label for="FingerJoint_finger">finger</label></td><td><input name="FingerJoint_finger" id="FingerJoint_finger" aria-labeledby="FingerJoint_finger_id FingerJoint_finger_description" type="text" value="2.0"></td><td id="FingerJoint_finger_description"><p>width of the fingers (multiples of thickness)</p></td>
-                </tr>
-                <tr>
-                    <td id="FingerJoint_play_id"><label for="FingerJoint_play">play</label></td><td><input name="FingerJoint_play" id="FingerJoint_play" aria-labeledby="FingerJoint_play_id FingerJoint_play_description" type="text" value="0.0"></td><td id="FingerJoint_play_description"><p>extra space to allow finger move in and out (multiples of thickness)</p></td>
-                </tr>
-                <tr>
-                    <td id="FingerJoint_space_id"><label for="FingerJoint_space">space</label></td><td><input name="FingerJoint_space" id="FingerJoint_space" aria-labeledby="FingerJoint_space_id FingerJoint_space_description" type="text" value="2.0"></td><td id="FingerJoint_space_description"><p>space between fingers (multiples of thickness)</p></td>
-                </tr>
-                <tr>
-                    <td id="FingerJoint_width_id"><label for="FingerJoint_width">width</label></td>
-                    <td><input name="FingerJoint_width" id="FingerJoint_width" aria-labeledby="FingerJoint_width_id FingerJoint_width_description" type="text" value="1.0"></td>
-                    <td id="FingerJoint_width_description"><p>width of finger holes (multiples of thickness)</p></td>
-                </tr>
-            </table><h3 id="h-1" data-id="1" role="button" aria-expanded="true" tabindex="0" class="toggle open">ClosedBox Settings</h3>
-            <table role="presentation" id="1">
-                <tr>
-                    <td id="x_id"><label for="x">x</label></td>
-                    <td><input name="x" id="x" aria-labeledby="x_id x_description" type="text" value="100.0"></td>
-                    <td id="x_description"><p>inner width in mm (unless outside selected)</p></td>
-                </tr>
-                <tr><td id="y_id"><label for="y">y</label></td>
-                    <td><input name="y" id="y" aria-labeledby="y_id y_description" type="text" value="100.0"></td><td id="y_description"><p>inner depth in mm (unless outside selected)</p></td></tr>
-                <tr>
-                    <td id="h_id"><label for="h">h</label></td><td><input name="h" id="h" aria-labeledby="h_id h_description" type="text" value="100.0"></td><td id="h_description"><p>inner height in mm (unless outside selected)</p></td></tr>
-                <tr>
-                    <td id="outside_id"><label for="outside">outside</label></td>
-                    <td><input name="outside" type="hidden" value="0"><input name="outside" id="outside" aria-labeledby="outside_id outside_description" type="checkbox" value="1" checked="checked"></td>
-                    <td id="outside_description"><p>treat sizes as outside measurements <a href=""></a></p></td>
-                </tr>
-            </table><h3 id="h-2" data-id="2" role="button" aria-expanded="true" tabindex="0" class="toggle open">Default Settings</h3>
-            <table role="presentation" id="2">
-                <tr><td id="thickness_id"><label for="thickness">thickness</label></td><td><input name="thickness" id="thickness" aria-labeledby="thickness_id thickness_description" type="text" value="3.0"></td><td id="thickness_description"><p>thickness of the material (in mm) <a href=""></a></p></td></tr>
-                <tr><td id="format_id"><label for="format">format</label></td><td><select name="format" id="format" aria-labeledby="format_id format_description" size="1">
-                <option value="ai">ai</option>
-                <option value="dxf">dxf</option>
-                <option value="gcode">gcode</option>
-                <option value="lbrn2">lbrn2</option>
-                <option value="pdf">pdf</option>
-                <option value="plt">plt</option>
-                <option value="ps">ps</option>
-                <option value="svg" selected="selected">svg</option>
-                <option value="svg_Ponoko">svg_Ponoko</option></select>
-                </td><td id="format_description"><p>format of resulting file <a href="https://florianfesti.github.io/boxes/html/usermanual.html#format">🛈</a></p></td></tr>
-                <tr><td id="tabs_id"><label for="tabs">tabs</label></td><td><input name="tabs" id="tabs" aria-labeledby="tabs_id tabs_description" type="text" value="0.0"></td><td id="tabs_description"><p>width of tabs holding the parts in place (in mm)(not supported everywhere) <a href="https://florianfesti.github.io/boxes/html/usermanual.html#tabs">🛈</a></p></td></tr>
-                <tr><td id="debug_id"><label for="debug">debug</label></td><td><input name="debug" type="hidden" value="0">
-                <input name="debug" id="debug" aria-labeledby="debug_id debug_description" type="checkbox" value="1"></td><td id="debug_description"><p>print surrounding boxes for some structures <a href="https://florianfesti.github.io/boxes/html/usermanual.html#debug">🛈</a></p></td></tr>
-                <tr><td id="labels_id"><label for="labels">labels</label></td><td><input name="labels" type="hidden" value="0">
-                <input name="labels" id="labels" aria-labeledby="labels_id labels_description" type="checkbox" value="1" checked="checked"></td><td id="labels_description"><p>label the parts (where available)</p></td></tr>
-                <tr><td id="reference_id"><label for="reference">reference</label></td><td><input name="reference" id="reference" aria-labeledby="reference_id reference_description" type="text" value="100"></td><td id="reference_description"><p>print reference rectangle with given length (in mm)(zero to disable) <a href="https://florianfesti.github.io/boxes/html/usermanual.html#reference">🛈</a></p></td></tr>
-                <tr><td id="inner_corners_id"><label for="inner_corners">inner_corners</label></td><td><select name="inner_corners" id="inner_corners" aria-labeledby="inner_corners_id inner_corners_description" size="1">
-                <option value="loop" selected="selected">loop</option>
-                <option value="corner">corner</option>
-                <option value="backarc">backarc</option></select>
-                </td><td id="inner_corners_description"><p>style for inner corners <a href="https://florianfesti.github.io/boxes/html/usermanual.html#inner-corners">🛈</a></p></td></tr>
-                <tr><td id="burn_id"><label for="burn">burn</label></td><td><input name="burn" id="burn" aria-labeledby="burn_id burn_description" type="text" value="0.1"></td><td id="burn_description"><p>burn correction (in mm)(bigger values for tighter fit) <a href="https://florianfesti.github.io/boxes/html/usermanual.html#burn">🛈</a></p></td></tr>
-            </table>
-            <p>
-                <button name="render" value="1" formtarget="_blank">Generate</button>
-                <button name="render" value="2" formtarget="_self">Download</button>
-            </p>
-            </form>
-            <div class="clear"></div>
-
-        <script type="text/javascript" src="{% static '/js/boxgen.js' %}"></script>
-        -->
 
     </body>
 </html>

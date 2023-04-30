@@ -14,4 +14,11 @@ class Toolpaths(models.Model):
     def __str__(self):
         return f"{self.filename} is {self.vectorlength} lines long"
     
+
+class Images(models.Model):
+    input_name = models.CharField(max_length = 300)
+    input_image = models.ImageField(upload_to = "static/uploads/")
+ 
+    def __str__(self):
+        return self.input_name
 '''

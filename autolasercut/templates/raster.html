@@ -3,17 +3,45 @@
 <html lang="en">
     <head>
         {% include "_header.html" %}    
+
+        <style>
+            .fillwidth {
+                min-width: 100%;
+                height: auto;
+            }
+            .fillheight {
+                min-height: 100%; 
+                width: auto;
+            }
+            .boundingbox {
+                background-size: contain;
+                position: absolute;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 50%;
+                width: 50%;
+              }
+        </style>
     </head>
     <body>
         {% include "_nav.html" %}    
 
-        <innerbody>
+        <innerbody style="text-align: center;">
             <h1>Laser Image Raster</h1>
-            <p>This application will help you convert images into laser cutting toolpaths.</p>
+            <p>This application will help you convert images into laser engraving toolpaths.</p>
+            <p>This tool expects an image, a name, and some parameters for performing the rasterization. At this point, the parameters do not respond in real-time, but you can try uploading the image multiple times with different parameters to see the result. 
+                It is important that you use reasonable values for the resolution. This is the scale of dithering. A value of 400 gives fast and resonable results. A value of 1200 will take a few seconds but very good resolution. A maximum limit of 4000 is imposed due to computation time.</p>
+            <p>The general process for doing this is receiving the uploaded image (frame 1 below) > converting that image to greyscale (frame 2) > dithering that image (frame 3) OR recoloring that image to the expected color palette for the laser cutter (frame 4)</p>
 
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Upload Image..." />
+            </form>
+
+            <a href={{ srcimg }}><div class='boundingbox' style="background-image:url({{ srcimg }}); left:0%;"></div></a>
+            <a href={{ outimg }}><div class='boundingbox' style="background-image:url({{ outimg }}); left:50%;"></div></a>
         </innerbody>
-
-        
 
         <script type="text/javascript" src="{% static '/js/testscript.js' %}"></script>
     </body>

@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+import random
 
 def get_database():
     # Retrurns the database object
@@ -32,19 +33,25 @@ def get_record_type(table, _type):
     for i in table.find({'type': _type}):
         print(i)
 
+def create_random_record(collection):
+    rn = random.randrange(100000)
+    rt = random.randrange(100000)
+    rf = random.randrange(100000)
+    rec = new_record(rn, rt, rf)
+    add_record(collection, rec)
+    return rn
+
 if __name__ == "__main__":   
-  
+    print("\n")
+
     # Get the database
     myDB = get_database()
-    myCollection = myDB['tp']
+    myCollection = myDB['test']
 
-    # Add this record to the database
-    my_first_record = new_record('testRect', 'box', '/autolasercut/toolpaths/testRect.svg')
-    add_record(myCollection, my_first_record)
-
-    # Add this record to the database
-    my_second_record = new_record('40deep', 'box', '/autolasercut/toolpaths/40deep.svg')
-    add_record(myCollection, my_second_record)
+    # Add record to the database
+    #rn = create_random_record(myCollection)
 
     # Find this record to the database and print it out
-    get_record(myCollection, 'testRect')
+    #res = get_record(myCollection, rn)
+
+    print(myCollection.count_documents({}))

@@ -3,6 +3,18 @@
 <html lang="en">
     <head>
         {% include "_header.html" %}    
+
+        <style>
+            .exampleimg {
+                background-size: contain;
+                position: absolute;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 200px;
+                width: 350px;
+                border: 3px solid #222;
+              }
+        </style>
     </head>
     <body>
         {% include "_nav.html" %}    
@@ -14,7 +26,41 @@
             <p>This tool is developed as part of my SEIS 739 class project</p>
         </innerbody>
 
-        
+        <div>
+            <h3>Tracing Images</h3>
+            <p>To trace an image, go to the 'laser cutting' tab. Tracing will give you the outer perimeter of distinct colors in the image. 
+                It does not work so well on photographs but can work great for converting a monocolor image to just its outline. 
+                This is particularly useful for converting shapes to stickers or laser cutouts.</p>
+            <p>This tool expects an image, a name, and some parameters for performing the trace. At this point, the parameters do not respond in real-time, but you can try uploading the image multiple times with different parameters to see the result.</p>
+            <p>The general process for doing this is receiving the uploaded image (frame 1 below) > converting that image to greyscale (frame 2) > thresholding that image (frame 3, multiple possibilities) > converting that image to the expected color palette for the laser cutter (frame 4)</p>
+            <div class='exampleimg' style="background-image:url(/static/img/example/mural.jpg); left:175px; width:478px;"></div>
+            <div class='exampleimg' style="background-image:url(/static/img/example/desert_cv.png); left:675px; width:478px;"></div>
+        </div>
+        <div style="height:225px;"></div>
+        <div>
+            <h3>Engraving Images</h3>
+            <p>To engrave an image, go to the 'laser engraving' tab. Engraving will laser burn an image based on the greyscale intensity of the image. 
+                It works well on photographs but can only show the greyscale version of that image when burning the image onto your surface.</p>
+            <p>This tool expects an image, a name, and some parameters for performing the rasterization. At this point, the parameters do not respond in real-time, but you can try uploading the image multiple times with different parameters to see the result. 
+                It is important that you use reasonable values for the resolution. This is the scale of dithering. A value of 400 gives fast and resonable results. A value of 1200 will take a few seconds but very good resolution. A maximum limit of 4000 is imposed due to computation time.</p>
+            <p>The general process for doing this is receiving the uploaded image (frame 1 below) > converting that image to greyscale (frame 2) > dithering that image (frame 3) OR recoloring that image to the expected color palette for the laser cutter (frame 4)</p>
+            <div class='exampleimg' style="background-image:url(/static/img/example/butterfly.jpg); left:175px; height:194px;"></div>
+            <div class='exampleimg' style="background-image:url(/static/img/example/butterfly2.png); left:550px; height:194px;"></div>
+            <div class='exampleimg' style="background-image:url(/static/img/example/butterfly_cv.png); left:925px; height:194px;"></div>
+            <div class='exampleimg' style="background-image:url(/static/img/example/butterfly_rim_cv.png); left:1300px; height:194px;"></div>
+        </div>
+        <div style="height:225px;"></div>
+        <div>
+            <h3>Box Generation</h3>
+            <p>This application will help you generate a laser cut box from basic template. Adjust the width, length, and depth of the box to generate your custom box.</p>
+            <div class='exampleimg' style="background-image:url(/static/img/example/box.png); left:175px;"></div>
+        </div>
+        <div style="height:225px;"></div>
+        <div>
+            <h3>Gear Generation</h3>
+            <p>This application will help you generate a laser cut gears from a basic template.</p>
+            <div class='exampleimg' style="background-image:url(/static/img/example/gear.png); left:175px;"></div>
+        </div>
 
         <script type="text/javascript" src="{% static '/js/testscript.js' %}"></script>
     </body>

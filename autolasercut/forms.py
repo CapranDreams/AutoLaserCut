@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 #from .models import Toolpaths
+from .models import *
 
 
 class UploadForm(ModelForm):
@@ -38,3 +39,24 @@ class GearForm(forms.Form):
 
     class Meta:
         finally_fields = ['gear_name', 'gear_teeth', 'gear_diameter']
+
+class RasterForm(forms.Form):
+    input_name = forms.CharField(max_length=300, help_text="")
+    #binarization_threshold = forms.IntegerField(min_value=0, max_value=255, help_text="/255")
+    #invert_image = forms.BooleanField(required=False)
+    dither_or_recolor = forms.BooleanField(required=False)
+    resolution = forms.IntegerField(min_value=16, max_value=4000)
+    input_image = forms.FileField()
+
+    class Meta:
+        finally_fields = ['input_name', 'input_image']
+        
+class CutForm(forms.Form):
+    input_name = forms.CharField(max_length=300, help_text="")
+    lower_binarization_threshold = forms.IntegerField(min_value=0, max_value=255, help_text="/255")
+    upper_binarization_threshold = forms.IntegerField(min_value=0, max_value=255, help_text="/255")
+    invert_image = forms.BooleanField(required=False)
+    input_image = forms.FileField()
+
+    class Meta:
+        finally_fields = ['input_name', 'input_image']

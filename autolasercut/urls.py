@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     #path('', views.index, name='index'),
@@ -26,7 +28,7 @@ urlpatterns = [
     path('raster/', views.raster_view, name='raster'),
     path('box/', views.box_view, name='box'),
     path('gear/', views.gear_view, name='gear'),
-    path('db/upload', views.db_upload, name='upload'),
+    #path('db/upload', views.db_upload, name='upload'),
     path('db/', views.db_view, name='db'),
     path('', views.home_view, name='index'),
 ]

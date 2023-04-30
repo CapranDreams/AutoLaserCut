@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 
 def get_database(db_name):
+    #CONNECTION_STRING = "mongodb+srv://________________________________________________________________"
     CONNECTION_STRING = "mongodb+srv://sasha:ON9beYlXRy1QBe83@testmongo.94agqyf.mongodb.net/toolpaths"
     client = MongoClient(CONNECTION_STRING)
     return client, client[db_name]
@@ -23,9 +24,17 @@ def new_record(_name, _type, _fileaddr):
         'file': _fileaddr
     } 
     return record
+def new_image_record(_name, _fileaddr):
+    # Create a new record (does not add it to the database yet)
+    record = {
+        'name': _name, 
+        'file': _fileaddr
+    } 
+    return record
 
 def add_record(table, record):
     # Add a record to the database collection (table)
     table.insert_one(record)
 
 myCollection = get_collection('toolpaths', 'tp')
+

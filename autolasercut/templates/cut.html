@@ -3,17 +3,42 @@
 <html lang="en">
     <head>
         {% include "_header.html" %}    
+
+        <style>
+            .fillwidth {
+                min-width: 100%;
+                height: auto;
+            }
+            .fillheight {
+                min-height: 100%; 
+                width: auto;
+            }
+            .boundingbox {
+                background-size: contain;
+                position: absolute;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 50%;
+                width: 50%;
+              }
+        </style>
     </head>
     <body>
         {% include "_nav.html" %}    
 
-        <innerbody>
+        <innerbody style="text-align: center;">
             <h1>Laser Outline Tracer</h1>
-            <p>This application will help you convert images into laser cutting toolpaths. </p>
+            <p>This application will help you convert images into laser cutting toolpaths. If you don't know what parameters to use, try using 128 for threshold 1 and 255 for threshold 2. These settings will depend on the brightness of your image and which features you want to be captured. But these default settings will work great for black and white images.</p>
 
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Upload Image..." />
+            </form>
+
+            <a href={{ srcimg }}><div class='boundingbox' style="background-image:url({{ srcimg }}); left:0%;"></div></a>
+            <a href={{ outimg }}><div class='boundingbox' style="background-image:url({{ outimg }}); left:50%;"></div></a>
         </innerbody>
-
-        
 
         <script type="text/javascript" src="{% static '/js/testscript.js' %}"></script>
     </body>
