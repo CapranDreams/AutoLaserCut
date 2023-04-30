@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 
 def get_database(db_name):
-    #CONNECTION_STRING = "mongodb+srv://________________________________________________________________"
     client = MongoClient(CONNECTION_STRING)
     return client, client[db_name]
 
