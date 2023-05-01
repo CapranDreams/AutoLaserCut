@@ -18,12 +18,13 @@ to generate a class diagram in the terminal:
     dot -Tpng classDiagram.dot -o classDiagram.png
 
     
-<picture>
-  <source srcset="https://onyxibex.com/autolasercut/src/Screenshot.png">
-  <img alt="Screenshot">
-</picture>    
 
 <picture>
   <source srcset="https://onyxibex.com/autolasercut/src/UML.png">
   <img alt="UML">
 </picture>
+
+<picture>
+  <source srcset="https://onyxibex.com/autolasercut/src/Screenshot.png">
+  <img alt="Screenshot">
+</picture>    
